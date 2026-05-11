@@ -1,20 +1,16 @@
-import { IBranch } from "@/lib/types"
+import { IJobPosition } from "@/lib/types"
 import { Schema, models, model } from "mongoose"
 
-const Branch = new Schema<IBranch>(
+const JobPosition = new Schema<IJobPosition>(
   {
     name: {
       type: String,
       required: true,
       unique: true,
     },
-    code: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    address: {
-      type: String,
+    departmentId: {
+      type: Schema.Types.ObjectId,
+      ref: "Department",
       required: true,
     },
     isActive: {
@@ -27,4 +23,4 @@ const Branch = new Schema<IBranch>(
   }
 )
 
-export default models.Branch || model<IBranch>("Branch", Branch)
+export default models.Job_Position || model<IJobPosition>("Job_Position", JobPosition)

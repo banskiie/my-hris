@@ -28,7 +28,7 @@ export const branchSchema = gql`
   type BranchesResponse {
     success: Boolean!
     message: String!
-    data: Branch
+    data: BranchPagination
   }
 
   type Query {
@@ -40,7 +40,6 @@ export const branchSchema = gql`
     name: String!
     code: String!
     address: String
-    isActive: Boolean = true
   }
 
   input UpdateBranchInput {
@@ -51,7 +50,7 @@ export const branchSchema = gql`
 
   type Mutation {
     createBranch(input: CreateBranchInput!): BranchResponse
-    updateBranch(id: ID!, input: CreateBranchInput!): BranchResponse
-    updateStatusBranch(id: ID!): BranchResponse
+    updateBranch(id: ID!, input: UpdateBranchInput!): BranchResponse
+    updateBranchStatus(id: ID!): BranchResponse
   }
 `

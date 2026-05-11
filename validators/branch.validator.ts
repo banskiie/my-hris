@@ -8,7 +8,7 @@ export const CreateBranchSchema = z.object({
 })
 
 export const UpdateBranchSchema = z.object({
-  name: z.string().nonempty("Name must not be empty.").optional(),
+  name: z.string().optional(),
   code: z.string().min(2).max(20).optional(),
   address: z.string().optional(),
 })

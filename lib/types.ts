@@ -15,8 +15,13 @@ export enum EmployeeStatus {
 export interface IDepartment {
   _id: Types.ObjectId
   name: string
+  isActive: boolean
   createdAt?: Date
   updatedAt?: Date
+}
+
+export interface IDepartmentInput {
+  name: String
 }
 
 // Branch
@@ -25,6 +30,7 @@ export interface IBranch {
   name: string
   code: string
   address: string
+  isActive: boolean
   createdAt?: Date
   updatedAt?: Date
 }
@@ -39,9 +45,24 @@ export interface IBranchInput {
 export interface IJobPosition {
   _id: Types.ObjectId
   name: string
-  department_id: Types.ObjectId
+  departmentId: Types.ObjectId
+  isActive: boolean
   createdAt?: Date
   updatedAt?: Date
+}
+
+export interface IPopulatedJobPosition {
+  _id: Types.ObjectId
+  name: string
+  departmentId: IDepartment
+  isActive: boolean
+  createdAt: Date
+  updatedAt: Date
+}
+
+export interface IJobPositionInput {
+  name: string
+  departmentId: string
 }
 
 // Employee
@@ -59,4 +80,3 @@ export interface IEmployee {
   createdAt?: Date
   updatedAt?: Date
 }
-
