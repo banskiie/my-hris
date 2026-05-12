@@ -1,9 +1,5 @@
 import { jobPositionMapper } from "@/lib/mappers"
-import {
-  IJobPosition,
-  IJobPositionInput,
-  IPopulatedJobPosition,
-} from "@/lib/types"
+import { IJobPositionInput, IPopulatedJobPosition } from "@/lib/types"
 import JobPosition from "@/models/jobPosition.model"
 import {
   CreateJobPositionSchema,

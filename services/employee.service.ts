@@ -1,11 +1,12 @@
 import { employeeMapper } from "@/lib/mappers"
-import { IEmployee, IEmployeeInput, IPopulatedEmployee } from "@/lib/types"
+import { IEmployeeInput, IPopulatedEmployee } from "@/lib/types"
 import Employee from "@/models/employee.model"
 import {
   CreateEmployeeSchema,
   UpdateEmployeeSchema,
 } from "@/validators/employee.validator"
 import { Types } from "mongoose"
+import bcrypt from "bcryptjs"
 
 export class EmployeeService {
   // Queries
@@ -78,7 +79,11 @@ export class EmployeeService {
       Employee.exists({ employeeNo: input.employeeNo }),
     ])
     if (empNoAlreadyExists) throw new Error("Employee number already exists.")
-    const employee = await Employee.create(validated)
+    const employee = await Employee.create({
+      ...validated,
+      // Hashed password
+      password: await bcrypt.hash(validated.password, 10),
+    })
     return await this.getEmployeeById(employee.id)
   }
   async updateEmployee(id: string, input: IEmployeeInput) {

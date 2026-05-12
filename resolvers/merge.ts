@@ -3,10 +3,12 @@ import { branchResolver } from "./branch.resolver"
 import { departmentResolver } from "./department.resolver"
 import { jobPositionResolver } from "./jobPosition.resolver"
 import { employeeResolver } from "./employee.resolver"
+import { authResolver } from "./auth.resolver"
 
 export const resolvers = mergeResolvers([
   branchResolver,
   departmentResolver,
   jobPositionResolver,
   employeeResolver,
+  authResolver,
 ])

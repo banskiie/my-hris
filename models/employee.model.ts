@@ -20,6 +20,10 @@ const Employee = new Schema<IEmployee>(
       unique: true,
       required: true,
     },
+    password: {
+      type: String,
+      select: false,
+    },
     birthday: {
       type: Date,
       required: true,

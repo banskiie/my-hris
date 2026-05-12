@@ -55,6 +55,7 @@ export const employeeSchema = gql`
     lastName: String!
     role: Role!
     employeeNo: String!
+    password: String!
     birthday: String!
     branchId: ID!
     jobPositionId: ID!

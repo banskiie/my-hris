@@ -6,6 +6,15 @@ export const CreateEmployeeSchema = z.object({
   firstName: z.string().nonempty("First name must not be empty."),
   lastName: z.string().nonempty("Last name must not be empty."),
   role: z.enum(Object.values(Role), "Please select a valid role."),
+  password: z
+    .string()
+    .nonempty("Password must not be empty")
+    .min(8, "Password must be at least 6 characters.")
+    .max(20, "Password must not be more than 20 characters.")
+    .regex(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$/,
+      "Password must contain at least one uppercase letter, one lowercase letter, one number, and one symbol."
+    ),
   employeeNo: z.string().nonempty("Employee no. must not be empty."),
   birthday: z.coerce.date("Invalid birthday."),
   branchId: z.string().nonempty("Branch must not be empty."),
