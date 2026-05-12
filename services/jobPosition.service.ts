@@ -71,10 +71,7 @@ export class JobPositionService {
     ])
     if (nameAlreadyExists) throw new Error("JobPosition name already exists.")
     const jobPosition = await JobPosition.create(validated)
-    const newJobPosition = await JobPosition.findById(jobPosition._id)
-      .populate("departmentId")
-      .lean()
-    return jobPositionMapper(newJobPosition)
+    return this.getJobPositionById(jobPosition.id)
   }
   async updateJobPosition(id: string, input: IJobPositionInput) {
     const validated = UpdateJobPositionSchema.parse(input)

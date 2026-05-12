@@ -2,7 +2,6 @@ import { Types } from "mongoose"
 
 export enum Role {
   EMPLOYEE = "EMPLOYEE",
-  APPROVER = "APPROVER",
   ADMIN = "ADMIN",
 }
 
@@ -70,7 +69,7 @@ export interface IEmployee {
   _id: Types.ObjectId
   firstName: string
   lastName: string
-  birthday: string
+  birthday: Date
   role: Role
   employeeNo: string
   password: string
@@ -79,4 +78,30 @@ export interface IEmployee {
   status: EmployeeStatus
   createdAt?: Date
   updatedAt?: Date
+}
+
+export interface IPopulatedEmployee {
+  _id: Types.ObjectId
+  firstName: string
+  lastName: string
+  birthday: Date
+  role: Role
+  employeeNo: string
+  password: string
+  branchId: IBranch
+  jobPositionId: IPopulatedJobPosition
+  status: EmployeeStatus
+  createdAt?: Date
+  updatedAt?: Date
+}
+
+export interface IEmployeeInput {
+  firstName: string
+  lastName: string
+  birthday: Date
+  role: Role
+  employeeNo: string
+  password: string
+  branchId: string
+  jobPositionId: string
 }
