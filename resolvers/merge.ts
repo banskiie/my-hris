@@ -6,9 +6,9 @@ import { employeeResolver } from "./employee.resolver"
 import { authResolver } from "./auth.resolver"
 
 export const resolvers = mergeResolvers([
+  authResolver,
+  employeeResolver,
   branchResolver,
   departmentResolver,
   jobPositionResolver,
-  employeeResolver,
-  authResolver,
 ])

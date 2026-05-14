@@ -6,9 +6,9 @@ import { employeeSchema } from "./employee.schema"
 import { authSchema } from "./auth.schema"
 
 export const typeDefs = mergeTypeDefs([
+  authSchema,
+  employeeSchema,
   branchSchema,
   departmentSchema,
   jobPositionSchema,
-  employeeSchema,
-  authSchema,
 ])

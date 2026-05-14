@@ -13,4 +13,23 @@ export const authResolver = {
       }
     },
   },
+  Mutation: {
+    login: async (
+      _: any,
+      {
+        employeeNo,
+        password,
+      }: {
+        employeeNo: string
+        password: string
+      }
+    ) => {
+      const employee = await authService.login(employeeNo, password)
+      return {
+        success: true,
+        message: "Employee logged in successfully.",
+        data: employee,
+      }
+    },
+  },
 }

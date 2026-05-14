@@ -2,14 +2,20 @@ import { Geist, Geist_Mono, Figtree } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
+import { Metadata } from "next"
 
-const figtree = Figtree({subsets:['latin'],variable:'--font-sans'})
+const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" })
 
 const fontMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
 })
+
+export const metadata: Metadata = {
+  title: "HuRes | My HRIS",
+  description: "Human Resource Information System",
+}
 
 export default function RootLayout({
   children,
@@ -20,10 +26,15 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, "font-sans", figtree.variable)}
+      className={cn(
+        "antialiased",
+        fontMono.variable,
+        "font-sans",
+        figtree.variable
+      )}
     >
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider forcedTheme="light">{children}</ThemeProvider>
       </body>
     </html>
   )
